@@ -22,7 +22,7 @@ globals()['MG_AlembicPath'] = []
 globals()['MG_ImportComplete'] = False
 
 bl_info = {
-    "name": "Megascans Plugin FC Edit",
+    "name": "Megascans Plugin Fork",
     "description": "Connects Blender to Quixel Bridge for one-click imports with shader setup and geometry",
     "author": "Quixel \ Sören Schmidt-Clausen",
     "version": (3, 7, 0),
@@ -32,7 +32,7 @@ bl_info = {
     "wiki_url": "https://docs.quixel.org/bridge/livelinks/blender/info_quickstart.html",
     "tracker_url": "https://docs.quixel.org/bridge/livelinks/blender/info_quickstart#release_notes",
     "support": "COMMUNITY",
-    "category": "FC"
+    "category": "Import-Export"
 }
 
 
