@@ -338,7 +338,7 @@ class MS_Init_ImportProcess():
         #self.mat.node_tree.nodes[self.parentName].inputs["IOR"].default_value = self.IOR
         
         #self.mat.node_tree.nodes[self.parentName].inputs["Specular"].default_value = 0 Macht kein Sinn! Sieht mit Specular besser aus.
-        self.mat.node_tree.nodes[self.parentName].inputs["Clearcoat"].default_value = 0
+        #self.mat.node_tree.nodes[self.parentName].inputs["Clearcoat"].default_value = 0
 
         
         #Create Node Group
@@ -347,7 +347,7 @@ class MS_Init_ImportProcess():
         #Create Input
         self.node_group_in = self.node_group.nodes.new("NodeGroupInput")
         self.node_group_in.location = (-1500, 0)
-        self.node_group.inputs.new("NodeSocketVector", "Vector")
+        self.node_group.interface.new_socket(name="NodeSocketVector", socket_type="NodeSocketVector")
 
         #Create Output
         self.node_group_out = self.node_group.nodes.new("NodeGroupOutput")
@@ -462,7 +462,7 @@ class MS_Init_ImportProcess():
 
     def JustConnectToGroupOutput(self, textureNode, socket_type, name):
         #Create the output for the node_group:
-        output = self.node_group.outputs.new(socket_type, name)
+        output = self.node_group.interface.new_socket(name=name, in_out="OUTPUT", socket_type=socket_type)
 
         #Connect to node group
         self.node_group.links.new(textureNode.outputs[0], self.node_group_out.inputs[name])
@@ -472,7 +472,10 @@ class MS_Init_ImportProcess():
         #Name for the Material
         bsdf_in = self.nodes.get(self.parentName).inputs[materialInputIndex] 
 
-        self.JustConnectToGroupOutput(textureNode, bsdf_in.bl_idname, bsdf_in.name)
+        # Remove Factor from ID, I actually have no idea why its even standing there
+        node_socket_id = bsdf_in.bl_idname.replace("Factor", "")
+
+        self.JustConnectToGroupOutput(textureNode, node_socket_id, bsdf_in.name)
 
         #Note this doesnt work for duplicate names, but this shouldn't happen here
         self.mat.node_tree.links.new(self.node_group_inst.outputs[bsdf_in.name], bsdf_in)
