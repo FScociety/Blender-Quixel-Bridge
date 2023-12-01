@@ -5,3 +5,8 @@ This version packs the texture of each quixel material into a convenient node gr
 
 ![megascan-nodepacking](https://github.com/FScociety/Blender-Quixel-Bridge/assets/40910944/19977a89-ff88-40fe-af53-d259f2dbd524)
 
+# Compatibility
+
+Tested in blender 3.6. 
+
+4.0 support expect in the future.
