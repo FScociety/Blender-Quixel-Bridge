@@ -7,6 +7,4 @@ This version packs the texture of each quixel material into a convenient node gr
 
 # Compatibility
 
-Tested in blender 3.6. 
-
-4.0 support expect in the future.
+Blender 4.0 supported
