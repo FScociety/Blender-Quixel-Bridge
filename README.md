@@ -7,4 +7,4 @@ This version packs the texture of each quixel material into a convenient node gr
 
 # Compatibility
 
-Blender 4.0 supported
+Blender 4.x supported
